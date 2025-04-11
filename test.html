@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Interattiva</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seleziona Capacità</h1>
+
+    <table id="capacitaTabella">
+        <tr>
+            <th>Capacità</th>
+            <th>Seleziona</th>
+        </tr>
+        <tr>
+            <td>Capacità 1</td>
+            <td><button onclick="selezionaCapacita('Capacità 1')">Seleziona</button></td>
+        </tr>
+        <tr>
+            <td>Capacità 2</td>
+            <td><button onclick="selezionaCapacita('Capacità 2')">Seleziona</button></td>
+        </tr>
+        <tr>
+            <td>Capacità 3</td>
+            <td><button onclick="selezionaCapacita('Capacità 3')">Seleziona</button></td>
+        </tr>
+    </table>
+
+    <h1>Nomi corrispondenti</h1>
+    <table id="nomiTabella">
+        <tr>
+            <th>Capacità</th>
+            <th>Nome</th>
+        </tr>
+    </table>
+
+    <script>
+        // Mappa di capacità e nomi
+        const capacitaNomi = {
+            "Capacità 1": "Nome 1",
+            "Capacità 2": "Nome 2",
+            "Capacità 3": "Nome 3"
+        };
+
+        function selezionaCapacita(capacita) {
+            const nomiTabella = document.getElementById('nomiTabella');
+            
+            // Rimuovi tutte le righe tranne l'intestazione
+            while (nomiTabella.rows.length > 1) {
+                nomiTabella.deleteRow(1);
+            }
+
+            // Aggiungi la nuova riga
+            const nuovaRiga = nomiTabella.insertRow();
+
+            const cellaCapacita = nuovaRiga.insertCell(0);
+            cellaCapacita.textContent = capacita;
+
+            const cellaNome = nuovaRiga.insertCell(1);
+            cellaNome.textContent = capacitaNomi[capacita];
+        }
+    </script>
+</body>
+</html>
