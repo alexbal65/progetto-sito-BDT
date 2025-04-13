@@ -3,34 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizzazione XML</title>
+    <title>Benvenuto</title>
 </head>
 <body>
-    <h1>Dati dal file XML</h1>
-    <div id="output">Caricamento...</div>
-    <script>
-        // Legge il file XML dal repository
-        fetch('bancadeltempodilucca.WordPress.2025-04-11.xml')
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data, "text/xml");
-                
-                // Raccoglie gli elementi da visualizzare (esempio generico)
-                const elementi = xmlDoc.getElementsByTagName("elemento");
-                let output = "<ul>";
-                for (let i = 0; i < elementi.length; i++) {
-                    const nome = elementi[i].getElementsByTagName("nome")[0]?.textContent || "N/A";
-                    const valore = elementi[i].getElementsByTagName("valore")[0]?.textContent || "N/A";
-                    output += `<li>${nome}: ${valore}</li>`;
-                }
-                output += "</ul>";
-                document.getElementById("output").innerHTML = output;
-            })
-            .catch(error => {
-                document.getElementById("output").innerHTML = "Errore nel caricamento dei dati.";
-                console.error("Errore:", error);
-            });
-    </script>
+    <h1>Ciao, Benvenuto nel mio sito!</h1>
+    <p>Questo è un sito ospitato su GitHub Pages.</p>
 </body>
 </html>
